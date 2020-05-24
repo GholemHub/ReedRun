@@ -42,11 +42,9 @@ namespace ReedRun
                 case Keys.Space:
 
                     break;
-                    }
-            }
-
+             }
+        }
         public char[] word = new char[50];
-
 
         public void Update(object sender, EventArgs e)
         {
@@ -64,21 +62,21 @@ namespace ReedRun
             for (int i = 0; i < readText.Length; i++)
             {
                 if (!RunBool) return;
-                if (readText[i] == ' ')
+                if (readText[i] == ' ' || readText[i] == '\n' || readText[i] == ',' 
+                    || readText[i] == ';' || readText[i] == '.'
+                    || readText[i] == '-' || readText[i] == '(' || readText[i] == ')')
                 {
                     string str = "";
                     for (int q = 0; q < j; q++)
                     {
                         str += word[q];
                     }
-
                     label1.Text = str;
                     Refresh();
-                    Thread.Sleep(200);
+                    Thread.Sleep(300);
                     j = 0;
                     word = null;
                     word = new char[50];
-
                 }
                 else
                 {
