@@ -152,7 +152,7 @@ namespace ReedRun
             SetPauseBool(!PauseBool);
         }
 
-        private void Stop_Click(object sender, EventArgs e)
+        private void Stop_Click(object sender,  EventArgs e)
         {
             SetRunBool(false);
             label1.Text = "The End!!!";
