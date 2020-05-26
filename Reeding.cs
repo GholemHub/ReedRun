@@ -14,6 +14,7 @@ namespace ReedRun
 {
     public partial class Reeding : Form
     {
+        public FontDialog font = new FontDialog();
         public string readText;
         public Reeding(string readText)
         {
@@ -30,6 +31,9 @@ namespace ReedRun
         {
             string str = String.Empty;
             int i = 0;
+            
+
+
             while (readText.Length > i)
             {
                 if (readText[i] == '.' || readText[i] == ','
@@ -101,7 +105,7 @@ namespace ReedRun
                             str += word[q];
                         }
 
-                        Thread.Sleep(300);
+                        //Thread.Sleep(300);
 
                         Action action = () =>
                         {
@@ -114,7 +118,7 @@ namespace ReedRun
                             action();
 
 
-                        // Thread.Sleep(300);
+                         Thread.Sleep(300);
                         j = 0;
                         word = null;
                         word = new char[50];
@@ -150,8 +154,15 @@ namespace ReedRun
 
         private void Stop_Click(object sender, EventArgs e)
         {
-                SetRunBool(false);
+            SetRunBool(false);
             label1.Text = "The End!!!";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            font.ShowDialog();
+            label1.Font = font.Font;
         }
     }
 }

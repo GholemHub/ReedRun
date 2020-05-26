@@ -25,14 +25,15 @@ namespace ReedRun
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            Application.Exit();
         }
 
       
 
         private void FileManager_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             Form1 form1 = new Form1();
             form1.ShowDialog();
         }

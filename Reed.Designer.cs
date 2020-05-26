@@ -77,11 +77,10 @@
             // 
             // GoReed
             // 
-            this.GoReed.Location = new System.Drawing.Point(883, 228);
+            this.GoReed.Location = new System.Drawing.Point(894, 286);
             this.GoReed.Name = "GoReed";
             this.GoReed.Size = new System.Drawing.Size(133, 120);
             this.GoReed.TabIndex = 3;
-            this.GoReed.Text = "button1";
             this.GoReed.UseVisualStyleBackColor = true;
             this.GoReed.Click += new System.EventHandler(this.GoReed_Click);
             // 
@@ -96,6 +95,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Reed";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reed";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
