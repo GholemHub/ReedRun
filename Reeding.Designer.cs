@@ -32,8 +32,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.Run = new System.Windows.Forms.Button();
-            this.Stop = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Stop = new System.Windows.Forms.Button();
+            this.Pause = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,32 +49,26 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(336, 187);
+            this.label1.Location = new System.Drawing.Point(269, 149);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(327, 187);
+            this.label1.Size = new System.Drawing.Size(260, 150);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Run
             // 
-            this.Run.Location = new System.Drawing.Point(98, 74);
+            this.Run.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Run.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Run.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Run.FlatAppearance.BorderSize = 0;
+            this.Run.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Run.Location = new System.Drawing.Point(3, 3);
             this.Run.Name = "Run";
-            this.Run.Size = new System.Drawing.Size(75, 23);
+            this.Run.Size = new System.Drawing.Size(260, 143);
             this.Run.TabIndex = 1;
-            this.Run.Text = "button1";
-            this.Run.UseVisualStyleBackColor = true;
+            this.Run.UseVisualStyleBackColor = false;
             this.Run.Click += new System.EventHandler(this.Run_Click);
-            // 
-            // Stop
-            // 
-            this.Stop.Location = new System.Drawing.Point(98, 450);
-            this.Stop.Name = "Stop";
-            this.Stop.Size = new System.Drawing.Size(75, 23);
-            this.Stop.TabIndex = 2;
-            this.Stop.Text = "button1";
-            this.Stop.UseVisualStyleBackColor = true;
-            this.Stop.Click += new System.EventHandler(this.Stop_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -80,7 +76,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.Stop, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.Run, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Pause, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -88,17 +87,43 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 563);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // Stop
+            // 
+            this.Stop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Stop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Stop.FlatAppearance.BorderSize = 0;
+            this.Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Stop.Location = new System.Drawing.Point(3, 302);
+            this.Stop.Name = "Stop";
+            this.Stop.Size = new System.Drawing.Size(260, 145);
+            this.Stop.TabIndex = 4;
+            this.Stop.UseVisualStyleBackColor = false;
+            this.Stop.Click += new System.EventHandler(this.Stop_Click);
+            // 
+            // Pause
+            // 
+            this.Pause.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Pause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Pause.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Pause.FlatAppearance.BorderSize = 0;
+            this.Pause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Pause.Location = new System.Drawing.Point(3, 152);
+            this.Pause.Name = "Pause";
+            this.Pause.Size = new System.Drawing.Size(260, 144);
+            this.Pause.TabIndex = 5;
+            this.Pause.UseVisualStyleBackColor = false;
+            this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
             // Reeding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1000, 563);
-            this.Controls.Add(this.Stop);
-            this.Controls.Add(this.Run);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Reeding";
@@ -117,7 +142,9 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Run;
-        private System.Windows.Forms.Button Stop;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button Stop;
+        private System.Windows.Forms.Button Pause;
     }
 }

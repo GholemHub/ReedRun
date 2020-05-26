@@ -19,16 +19,32 @@ namespace ReedRun
         {
             InitializeComponent();
             this.KeyPreview = true;
-            this.readText = readText;
-            //timer1.Interval = 40; 
-
-            //timer1.Tick += new EventHandler(Update);
-
-            
+            this.readText = GetRRText(readText);
 
             this.KeyDown += new KeyEventHandler(OnPress);
 
-         //   label1.Text = readText;
+           
+        }
+
+        public string GetRRText(string readText)
+        {
+            string str = String.Empty;
+            int i = 0;
+            while (readText.Length > i)
+            {
+                if (readText[i] == '.' || readText[i] == ','
+                    || readText[i] == ';' || readText[i] == '.'
+                    || readText[i] == '-' || readText[i] == '(' || readText[i] == ')')
+                {
+                    i++;
+                }
+                
+                if(i <= readText.Length)
+                    str += readText[i];
+
+                i++;
+            }
+            return str;
         }
         public int j = 0;
         public void OnPress(object sender, KeyEventArgs e)
@@ -46,49 +62,96 @@ namespace ReedRun
         }
         public char[] word = new char[50];
 
-        public void Update(object sender, EventArgs e)
-        {
-
-           
-        }
+      
 
         private void Reeding_Load(object sender, EventArgs e)
         {
            
         }
         private bool RunBool = true;
+        private bool PauseBool = true;
+
+        public void SetRunBool(bool atg)
+        {
+            RunBool = atg;
+        }
+        public void SetPauseBool(bool atg)
+        {
+            PauseBool = atg;
+        }
+
+        public void StartRead()
+        {
+            int i = 0;
+
+            while (i < readText.Length)
+            {
+
+                if (PauseBool)
+                {
+                    if (!RunBool) return;
+
+                    if (readText[i] == ' ' || readText[i] == '\n' || readText[i] == ','
+                        || readText[i] == ';' || readText[i] == '.'
+                        || readText[i] == '-' || readText[i] == '(' || readText[i] == ')')
+                    {
+                        string str = "";
+                        for (int q = 0; q < j; q++)
+                        {
+                            str += word[q];
+                        }
+
+                        Thread.Sleep(300);
+
+                        Action action = () =>
+                        {
+                            label1.Text = str;
+                            Refresh();
+                        };
+                        if (InvokeRequired)
+                            Invoke(action);
+                        else
+                            action();
+
+
+                        // Thread.Sleep(300);
+                        j = 0;
+                        word = null;
+                        word = new char[50];
+                    }
+                    else
+                    {
+                        word[j] = readText[i];
+                        j++;
+                    }
+                    i++;
+                }
+                
+            }
+        }
         private void Run_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < readText.Length; i++)
-            {
-                if (!RunBool) return;
-                if (readText[i] == ' ' || readText[i] == '\n' || readText[i] == ',' 
-                    || readText[i] == ';' || readText[i] == '.'
-                    || readText[i] == '-' || readText[i] == '(' || readText[i] == ')')
-                {
-                    string str = "";
-                    for (int q = 0; q < j; q++)
-                    {
-                        str += word[q];
-                    }
-                    label1.Text = str;
-                    Refresh();
-                    Thread.Sleep(300);
-                    j = 0;
-                    word = null;
-                    word = new char[50];
-                }
-                else
-                {
-                    word[j] = readText[i];
-                    j++;
-                }
-            }
+            Thread thread = new Thread(StartRead);
+
+            thread.Start();
+
+            Run.BackColor = Color.Black;
+            Pause.BackColor = Color.Gray;
+            Run.BackColor = Color.Gray;
+
+            label1.Text = "The End!!!";
+            Refresh();
+        }
+
+        private void Pause_Click(object sender, EventArgs e)
+        {
+            SetPauseBool(!PauseBool);
         }
 
         private void Stop_Click(object sender, EventArgs e)
         {
-            RunBool = false;
+                SetRunBool(false);
+            label1.Text = "The End!!!";
         }
     }
 }
