@@ -17,6 +17,21 @@ namespace ReedRun
         public Reed()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(OnPress);
+        }
+        public void OnPress(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                case Keys.Space:
+
+                    break;
+            }
         }
         private string filePath = string.Empty;
         public string readText;
@@ -53,7 +68,7 @@ namespace ReedRun
                 else 
                 {
                     this.Hide();
-                    Reeding reeding = new Reeding(richTextBox1.Text);
+                    Reeding reeding = new Reeding(richTextBox1.Text );
                     reeding.ShowDialog();
                 }
                 

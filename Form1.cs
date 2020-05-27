@@ -24,6 +24,21 @@ namespace ReedRun
         public Form1()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(OnPress);
+        }
+        public void OnPress(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                case Keys.Space:
+
+                    break;
+            }
         }
         private string filePath = string.Empty;
         private string lang = string.Empty;

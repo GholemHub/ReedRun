@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Exit = new System.Windows.Forms.Button();
             this.FileManager = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Reed = new System.Windows.Forms.Button();
+            this.myCheckBox1 = new ReedRun.MyCheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +67,7 @@
             this.tableLayoutPanel1.Controls.Add(this.FileManager, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.Exit, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.Reed, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.myCheckBox1, 2, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -73,6 +77,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.73921F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.73921F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.73921F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1006, 561);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
@@ -85,6 +90,21 @@
             this.Reed.TabIndex = 7;
             this.Reed.UseVisualStyleBackColor = true;
             this.Reed.Click += new System.EventHandler(this.Reed_Click);
+            // 
+            // myCheckBox1
+            // 
+            this.myCheckBox1.BackColor = System.Drawing.Color.White;
+            this.myCheckBox1.BackColorON = System.Drawing.Color.Red;
+            this.myCheckBox1.Checked = false;
+            this.myCheckBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.myCheckBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.myCheckBox1.Font = new System.Drawing.Font("Verdana", 9F);
+            this.myCheckBox1.Location = new System.Drawing.Point(692, 458);
+            this.myCheckBox1.Name = "myCheckBox1";
+            this.myCheckBox1.Size = new System.Drawing.Size(60, 35);
+            this.myCheckBox1.TabIndex = 8;
+            this.myCheckBox1.Text = "myCheckBox1";
+            this.myCheckBox1.Click += new System.EventHandler(this.myCheckBox1_Click);
             // 
             // MainMenu
             // 
@@ -109,5 +129,7 @@
         private System.Windows.Forms.Button FileManager;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button Reed;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private MyCheckBox myCheckBox1;
     }
 }

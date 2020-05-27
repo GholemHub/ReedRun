@@ -24,7 +24,15 @@ namespace ReedRun
 
             this.KeyDown += new KeyEventHandler(OnPress);
 
-           
+            if (!DarkMode.darkMode)
+            {
+                this.BackColor = Color.White;
+                label1.ForeColor = Color.Black;
+            }else
+            {
+                this.BackColor = Color.Black;
+                label1.ForeColor = Color.White;
+            }
         }
 
         public string GetRRText(string readText)
@@ -160,7 +168,6 @@ namespace ReedRun
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
             font.ShowDialog();
             label1.Font = font.Font;
         }
