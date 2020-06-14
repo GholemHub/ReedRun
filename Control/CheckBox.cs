@@ -82,8 +82,6 @@ namespace ReedRun
                 g.FillPath(new SolidBrush(BackColorON), rectGP);
             }
 
-            
-
             g.DrawEllipse (TSPenToggle, rectToggle);
             g.FillEllipse (new SolidBrush(Color.White), rectToggle  );
         }

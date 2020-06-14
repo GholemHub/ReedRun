@@ -80,5 +80,27 @@ namespace ReedRun
 
            
         }
+
+        private void GoReed_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (String.IsNullOrEmpty(richTextBox1.Text))
+                {
+                    throw new Exception("No Added Text!");
+                }
+                else
+                {
+                    this.Hide();
+                    Reeding reeding = new Reeding(richTextBox1.Text);
+                    reeding.ShowDialog();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
