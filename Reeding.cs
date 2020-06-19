@@ -48,60 +48,68 @@ namespace ReedRun
         {
             label2.Text = e.ProgressPercentage.ToString();
         }
-
+        private int i = 0;
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            int i = 0;
+
+            SetButtonColor2();
+
             while (i < readText.Length)
-                {
+            {
                     
 
-                    if (PauseBool)
+                if (PauseBool)
+                {
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+
+                    if (readText[i] == ' ' || readText[i] == '\n' || readText[i] == ','
+                        || readText[i] == ';' || readText[i] == '.'
+                        || readText[i] == '-' || readText[i] == '(' || readText[i] == ')')
                     {
-                    if (worker.CancellationPending)
+                        string str = "";
+                        for (int q = 0; q < j; q++)
+                        {
+                            str += word[q];
+                        }
+
+                    //Thread.Sleep(300);
+                    if (worker.CancellationPending == true)
                     {
                         e.Cancel = true;
-                        break;
+                        return;
                     }
-
-                        if (readText[i] == ' ' || readText[i] == '\n' || readText[i] == ','
-                            || readText[i] == ';' || readText[i] == '.'
-                            || readText[i] == '-' || readText[i] == '(' || readText[i] == ')')
+                    Action action = () =>
                         {
-                            string str = "";
-                            for (int q = 0; q < j; q++)
-                            {
-                                str += word[q];
-                            }
-
-                            //Thread.Sleep(300);
-
-                            Action action = () =>
-                            {
-                                label1.Text = str;
-                                Refresh();
-                            };
-                            if (InvokeRequired)
-                                Invoke(action);
-                            else
-                                action();
-
-
-                            Thread.Sleep(300);
-                            j = 0;
-                            word = null;
-                            word = new char[50];
-                        }
+                            label1.Text = str;
+                            Refresh();
+                        };
+                        if (InvokeRequired)
+                            Invoke(action);
                         else
-                        {
-                            word[j] = readText[i];
-                            j++;
-                        }
-                        i++;
-                    }
+                            action();
 
+
+                        Thread.Sleep(300);
+                        j = 0;
+                        word = null;
+                        word = new char[50];
+                    }
+                    else
+                    {
+                        word[j] = readText[i];
+                        j++;
+                    }
+                    i++;
                 }
-            //SetAlredyRunBool(true);
+
+            }
+
+            SetButtonColor();
+
             worker.ReportProgress(i);
             
             
@@ -178,61 +186,81 @@ namespace ReedRun
             AlredyRun = !arg;
         }
         //public Thread thread;
-        private void Run_Click(object sender, EventArgs e)
-        {
-            
-           
-        }
-
-        private void Pause_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Stop_Click(object sender,  EventArgs e)
-        {
-           
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void Run_Click_1(object sender, EventArgs e)
         {
+            SetButtonColor();
             worker.RunWorkerAsync();
-
-            Run.BackColor = Color.Black;
-            Pause.BackColor = Color.Gray;
-            Run.BackColor = Color.Gray;
-
-            //label1.Text = "The End!!!";
+            Run.Enabled = false;
             Refresh();
         }
 
-        private void Pause_Click_1(object sender, EventArgs e)
+        public void Pause_Click_1(object sender, EventArgs e)
         {
             SetPauseBool(!PauseBool);
         }
 
-        private void Stop_Click_1(object sender, EventArgs e)
+        public void SetButtonColor()
         {
-            Run.Enabled = true;
+            //MessageBox.Show("23");
+            if (DarkMode.darkMode)
+            {
+                Stop.BackColor = Color.Gray;
+                Pause.BackColor = Color.Gray;
+                Run.BackColor = Color.Gray;
+                button1.BackColor = Color.Gray;
+            }
+            else
+            {
+                Stop.BackColor = Color.Black;
+                Pause.BackColor = Color.Black;
+                Run.BackColor = Color.Black;
+                button1.BackColor = Color.Black;
+            }
+        }
+        private void SetButtonColor2()
+        {
+            if (DarkMode.darkMode)
+            {
+                Stop.BackColor = Color.Black;
+                Pause.BackColor = Color.Black;
+                Run.BackColor = Color.Black;
+                button1.BackColor = Color.Black;
+            }
+            else
+            {
+                Stop.BackColor = Color.Gray;
+                Pause.BackColor = Color.Gray;
+                Run.BackColor = Color.Gray;
+                button1.BackColor = Color.Gray;
+            }
+        }
+
+        private void Stop_Click_1(object sender, EventArgs e)
+        { 
             worker.CancelAsync();
+            SetButtonColor();
+            Run.Enabled = true;
             SetRunBool(false);
             SetAlredyRunBool(true);
+            SetPauseBool(true);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             font.ShowDialog();
             label1.Font = font.Font;
+        }
+
+        private void Speed_Click(object sender, EventArgs e)
+        {
+            
+           /* const string message =
+        "Are you sure that you would like to close the form?";
+            const string caption = "Form Closing";
+            MessageBox.Show(message, caption,
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question);*/
         }
     }
 }

@@ -39,6 +39,7 @@
             this.Pause = new ReedRun.UserButton();
             this.Stop = new ReedRun.UserButton();
             this.button1 = new ReedRun.UserButton();
+            this.Speed = new ReedRun.UserButton();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,10 +53,10 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(201, 121);
+            this.label1.Location = new System.Drawing.Point(202, 122);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 121);
+            this.label1.Size = new System.Drawing.Size(196, 122);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,12 +65,13 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(201, 0);
+            this.label2.Location = new System.Drawing.Point(202, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "label2";
+            this.label2.Visible = false;
             // 
             // worker
             // 
@@ -82,12 +84,13 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.Run, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.Pause, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.Stop, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.button1, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.Speed, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -105,9 +108,9 @@
             this.Run.ForeColor = System.Drawing.Color.White;
             this.Run.Location = new System.Drawing.Point(3, 3);
             this.Run.Name = "Run";
-            this.Run.Size = new System.Drawing.Size(193, 115);
+            this.Run.Size = new System.Drawing.Size(194, 116);
             this.Run.TabIndex = 5;
-            this.Run.Text = "userButton1";
+            this.Run.Text = "Reed";
             this.Run.Click += new System.EventHandler(this.Run_Click_1);
             // 
             // Pause
@@ -115,11 +118,11 @@
             this.Pause.BackColor = System.Drawing.Color.Gray;
             this.Pause.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Pause.ForeColor = System.Drawing.Color.White;
-            this.Pause.Location = new System.Drawing.Point(3, 124);
+            this.Pause.Location = new System.Drawing.Point(3, 125);
             this.Pause.Name = "Pause";
-            this.Pause.Size = new System.Drawing.Size(193, 115);
+            this.Pause.Size = new System.Drawing.Size(194, 116);
             this.Pause.TabIndex = 6;
-            this.Pause.Text = "userButton2";
+            this.Pause.Text = "Pouse";
             this.Pause.Click += new System.EventHandler(this.Pause_Click_1);
             // 
             // Stop
@@ -127,11 +130,11 @@
             this.Stop.BackColor = System.Drawing.Color.Gray;
             this.Stop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Stop.ForeColor = System.Drawing.Color.White;
-            this.Stop.Location = new System.Drawing.Point(3, 245);
+            this.Stop.Location = new System.Drawing.Point(3, 247);
             this.Stop.Name = "Stop";
-            this.Stop.Size = new System.Drawing.Size(193, 118);
+            this.Stop.Size = new System.Drawing.Size(194, 116);
             this.Stop.TabIndex = 7;
-            this.Stop.Text = "userButton3";
+            this.Stop.Text = "Stop";
             this.Stop.Click += new System.EventHandler(this.Stop_Click_1);
             // 
             // button1
@@ -139,12 +142,24 @@
             this.button1.BackColor = System.Drawing.Color.Gray;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(401, 3);
+            this.button1.Location = new System.Drawing.Point(403, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 115);
+            this.button1.Size = new System.Drawing.Size(194, 116);
             this.button1.TabIndex = 8;
-            this.button1.Text = "userButton4";
+            this.button1.Text = "Style";
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // Speed
+            // 
+            this.Speed.BackColor = System.Drawing.Color.Gray;
+            this.Speed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Speed.ForeColor = System.Drawing.Color.White;
+            this.Speed.Location = new System.Drawing.Point(403, 125);
+            this.Speed.Name = "Speed";
+            this.Speed.Size = new System.Drawing.Size(194, 116);
+            this.Speed.TabIndex = 9;
+            this.Speed.Text = "Speed";
+            this.Speed.Click += new System.EventHandler(this.Speed_Click);
             // 
             // Reeding
             // 
@@ -178,5 +193,6 @@
         private UserButton Pause;
         private UserButton Stop;
         private UserButton button1;
+        private UserButton Speed;
     }
 }
