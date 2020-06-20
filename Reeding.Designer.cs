@@ -39,8 +39,9 @@
             this.Pause = new ReedRun.UserButton();
             this.Stop = new ReedRun.UserButton();
             this.button1 = new ReedRun.UserButton();
-            this.Speed = new ReedRun.UserButton();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -65,7 +66,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(202, 0);
+            this.label2.Location = new System.Drawing.Point(202, 244);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
@@ -89,8 +90,8 @@
             this.tableLayoutPanel2.Controls.Add(this.Pause, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.Stop, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.button1, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.Speed, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.trackBar1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -149,17 +150,16 @@
             this.button1.Text = "Style";
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // Speed
+            // trackBar1
             // 
-            this.Speed.BackColor = System.Drawing.Color.Gray;
-            this.Speed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Speed.ForeColor = System.Drawing.Color.White;
-            this.Speed.Location = new System.Drawing.Point(403, 125);
-            this.Speed.Name = "Speed";
-            this.Speed.Size = new System.Drawing.Size(194, 116);
-            this.Speed.TabIndex = 9;
-            this.Speed.Text = "Speed";
-            this.Speed.Click += new System.EventHandler(this.Speed_Click);
+            this.trackBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.trackBar1.Location = new System.Drawing.Point(203, 74);
+            this.trackBar1.Maximum = 1000;
+            this.trackBar1.Minimum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(194, 45);
+            this.trackBar1.TabIndex = 10;
+            this.trackBar1.Value = 300;
             // 
             // Reeding
             // 
@@ -177,6 +177,7 @@
             this.Load += new System.EventHandler(this.Reeding_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -193,6 +194,6 @@
         private UserButton Pause;
         private UserButton Stop;
         private UserButton button1;
-        private UserButton Speed;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }

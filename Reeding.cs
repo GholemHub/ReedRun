@@ -56,7 +56,7 @@ namespace ReedRun
 
             while (i < readText.Length)
             {
-                    
+                
 
                 if (PauseBool)
                 {
@@ -75,8 +75,6 @@ namespace ReedRun
                         {
                             str += word[q];
                         }
-
-                    //Thread.Sleep(300);
                     if (worker.CancellationPending == true)
                     {
                         e.Cancel = true;
@@ -85,6 +83,7 @@ namespace ReedRun
                     Action action = () =>
                         {
                             label1.Text = str;
+                            DarkMode.speed = trackBar1.Value;
                             Refresh();
                         };
                         if (InvokeRequired)
@@ -93,7 +92,7 @@ namespace ReedRun
                             action();
 
 
-                        Thread.Sleep(300);
+                        Thread.Sleep(DarkMode.speed);
                         j = 0;
                         word = null;
                         word = new char[50];
@@ -111,8 +110,6 @@ namespace ReedRun
             SetButtonColor();
 
             worker.ReportProgress(i);
-            
-            
         }
 
         public string GetRRText(string readText)
@@ -161,8 +158,6 @@ namespace ReedRun
         }
         public char[] word = new char[50];
 
-      
-
         private void Reeding_Load(object sender, EventArgs e)
         {
            
@@ -180,12 +175,10 @@ namespace ReedRun
         {
             PauseBool = atg;
         }
-
         public void SetAlredyRunBool(bool arg)
         {
             AlredyRun = !arg;
         }
-        //public Thread thread;
 
         private void Run_Click_1(object sender, EventArgs e)
         {
@@ -202,7 +195,6 @@ namespace ReedRun
 
         public void SetButtonColor()
         {
-            //MessageBox.Show("23");
             if (DarkMode.darkMode)
             {
                 Stop.BackColor = Color.Gray;
@@ -250,17 +242,6 @@ namespace ReedRun
         {
             font.ShowDialog();
             label1.Font = font.Font;
-        }
-
-        private void Speed_Click(object sender, EventArgs e)
-        {
-            
-           /* const string message =
-        "Are you sure that you would like to close the form?";
-            const string caption = "Form Closing";
-            MessageBox.Show(message, caption,
-                                 MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question);*/
         }
     }
 }
