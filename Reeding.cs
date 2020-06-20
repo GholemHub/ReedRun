@@ -204,10 +204,10 @@ namespace ReedRun
             }
             else
             {
-                Stop.BackColor = Color.Black;
-                Pause.BackColor = Color.Black;
-                Run.BackColor = Color.Black;
-                button1.BackColor = Color.Black;
+                Stop.BackColor = Color.Gray;
+                Pause.BackColor = Color.Gray;
+                Run.BackColor = Color.Gray;
+                button1.BackColor = Color.Gray;
             }
         }
         private void SetButtonColor2()
@@ -221,10 +221,17 @@ namespace ReedRun
             }
             else
             {
-                Stop.BackColor = Color.Gray;
-                Pause.BackColor = Color.Gray;
-                Run.BackColor = Color.Gray;
-                button1.BackColor = Color.Gray;
+                Stop.BackColor = Color.White;
+                Stop.ForeColor = Color.Black;
+
+                Pause.BackColor = Color.White;
+                Pause.ForeColor = Color.Black;
+
+                Run.BackColor = Color.White;
+                Run.ForeColor = Color.Black;
+
+                button1.BackColor = Color.White;
+                button1.ForeColor = Color.Black;
             }
         }
 
